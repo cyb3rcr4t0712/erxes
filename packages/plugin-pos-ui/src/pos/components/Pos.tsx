@@ -7,6 +7,7 @@ import {
   Wrapper,
   __
 } from "@erxes/ui/src";
+import { Tooltip, Whisper } from "rsuite";
 import Appearance from "./step/Appearance";
 import { Content, LeftContent } from "../../styles";
 import {
@@ -210,15 +211,20 @@ const Pos = (props: Props) => {
       <Button.Group>
         {cancelButton}
 
-        <Button
-          disabled={isActionLoading}
-          btnStyle="success"
-          icon={isActionLoading ? undefined : "check-circle"}
-          onClick={handleSubmit}
+        <Whisper
+          placement="top"
+          speaker={<Tooltip>Save your POS configuration</Tooltip>}
         >
-          {isActionLoading && <SmallLoader />}
-          Save
-        </Button>
+          <Button
+            disabled={isActionLoading}
+            btnStyle="success"
+            icon={isActionLoading ? undefined : "check-circle"}
+            onClick={handleSubmit}
+          >
+            {isActionLoading && <SmallLoader />}
+            Save
+          </Button>
+        </Whisper>
       </Button.Group>
     );
   };
